@@ -16,10 +16,8 @@ import parser.ProgramNode;
  * </ul>
  */
 //TODO: POSSIBLY REFACTOR THIS CLASS TO REDUCE CODE DUPLICATION
-public class AopAdd implements Expression
+public class AopAdd extends Binop
 {
-  private Expression lhs;
-  private Expression rhs;
   
   /**
    * Constructs an expression with the given left and right sides.
@@ -30,8 +28,7 @@ public class AopAdd implements Expression
    */
   public AopAdd(Expression lhs, Expression rhs)
   {
-    this.lhs = lhs;
-    this.rhs = rhs;
+    super(lhs, rhs);
   }
 
   @Override
@@ -47,39 +44,11 @@ public class AopAdd implements Expression
   }
 
   @Override
-  public ProgramNode getChild(int i)
-  {
-    if (i == 0)
-    {
-      return lhs;
-    }
-    else if (i == 1)
-    {
-      return rhs;
-    }
-    else
-    {
-      return new DefaultNode("Invalid index " + i + " for type " + this.getClass().getName());
-    }
-  }
-
-  @Override
-  public int getNumChildren()
-  {
-    return 2;
-  }
-
-  @Override
   public int eval(Scope env)
   {
-    int leftVal = lhs.eval(env);
-    int rightVal = rhs.eval(env);
+    int leftVal = super.getChild(0).eval(env);
+    int rightVal = super.getChild(1).eval(env);
     return leftVal + rightVal;
   }
   
-  @Override
-  public String toString()
-  {
-    return makeString();
-  }
 }
