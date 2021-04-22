@@ -5,6 +5,7 @@ package hw4;
 
 import api.DefaultNode;
 import api.Expression;
+import api.Scope;
 import parser.ProgramNode;
 
 /**
