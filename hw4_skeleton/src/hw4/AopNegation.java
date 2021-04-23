@@ -1,7 +1,9 @@
 package hw4;
 
+import api.DefaultNode;
 import api.Expression;
 import api.Scope;
+import parser.ProgramNode;
 
 /**
  * Arithmetic negation expression (unary minus).  
@@ -13,9 +15,11 @@ import api.Scope;
  */
 // TODO: THIS CLASS MUST DIRECTLY OR INDIRECTLY IMPLEMENT THE Expression INTERFACE
 // AND OVERRIDE THE toString METHOD
-public class AopNegation //extends Binop
-{
-  /**
+public class AopNegation implements Expression{
+  
+	private Expression express;
+	
+	/**
    * Constructs a new unary expression representing the negative
    * of the given expression.
    * @param expr
@@ -23,27 +27,34 @@ public class AopNegation //extends Binop
    */
   public AopNegation(Expression expr)
   {
-//	  super(lhs, rhs);	
+	express = expr;   
   }
   
-//  @Override
-//  public String getLabel()
-//  {
-//    return "negative";
-//  }
-//  
-//  @Override
-//  public String getText()
-//  {
-//    return "";
-//  }
-//  
-//  @Override
-//  public int eval(Scope env)
-//  {
-//    int leftVal = super.getChild(0).eval(env);
-//    int rightVal = super.getChild(1).eval(env);
-//    return leftVal + rightVal;
-//  }
+  public int eval(Scope env) {
+	  return -(express.eval(env));
+  }
+
+@Override
+public ProgramNode getChild(int i) {
+	if(i == 0)
+		return express;
+	else 
+		return new DefaultNode("Invalid index " + i + " for type " + this.getClass().getName());
+}
+
+@Override
+public String getLabel() {
+	return "Negative";
+}
+
+@Override
+public int getNumChildren() {
+	return 1;
+}
+
+@Override
+public String getText() {
+	return "";
+}
 
 }

@@ -14,8 +14,8 @@ import parser.ProgramNode;
  */
 public abstract class Binop implements Expression{
 	
-	private Expression lhs;
-	private Expression rhs;
+	protected Expression lhs;
+	protected Expression rhs;
 	
 	/**
 	 * 

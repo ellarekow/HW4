@@ -44,8 +44,8 @@ public class AopDivide extends Binop
   @Override
   public int eval(Scope env)
   {
-    int leftVal = super.getChild(0).eval(env);
-    int rightVal = super.getChild(1).eval(env);
+    int leftVal = lhs.eval(env);
+    int rightVal = rhs.eval(env);
     return leftVal / rightVal;
   }
 
