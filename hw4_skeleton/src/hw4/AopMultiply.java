@@ -34,13 +34,6 @@ public class AopMultiply extends Binop
   {
     return "*";
   }
-  
-  @Override
-  public String getText()
-  {
-    return "";
-  }
-  
   @Override
   public int eval(Scope env)
   {

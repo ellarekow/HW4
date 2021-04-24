@@ -19,7 +19,7 @@ import parser.ProgramNode;
  * </ul>
  */
 //TODO: POSSIBLY REFACTOR THIS CLASS TO REDUCE CODE DUPLICATION
-public class AssignmentInstruction implements Instruction
+public class AssignmentInstruction extends Minop
 {
   private Identifier variable;
   private Expression expression;
@@ -33,43 +33,13 @@ public class AssignmentInstruction implements Instruction
    */
   public AssignmentInstruction(Identifier v, Expression e)
   {
-    variable = v;
-    expression = e;
+    super(v, e);
   }
 
   @Override
   public String getLabel()
   {
     return "Assign";
-  }
-
-  @Override
-  public String getText()
-  {
-    return variable.getText();
-  }
-
-  @Override
-  public ProgramNode getChild(int i)
-  {
-    if (i == 0)
-    {
-      return variable;
-    }
-    else if (i == 1)
-    {
-      return expression;
-    }
-    else
-    {
-      return new DefaultNode("Invalid index " + i + " for type " + this.getClass().getName());      
-    }
-  }
-
-  @Override
-  public int getNumChildren()
-  {
-    return 2;
   }
 
   @Override
@@ -80,11 +50,5 @@ public class AssignmentInstruction implements Instruction
     
     // update the scope with the new value
     env.put(name, value);
-  }
-
-  @Override
-  public String toString()
-  {
-    return makeString();
   }
 }

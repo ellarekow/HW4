@@ -36,12 +36,6 @@ public class AopDivide extends Binop
   }
   
   @Override
-  public String getText()
-  {
-    return "";
-  }
-  
-  @Override
   public int eval(Scope env)
   {
     int leftVal = lhs.eval(env);

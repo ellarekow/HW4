@@ -1,6 +1,8 @@
 package hw4;
 
 import api.Expression;
+import api.Scope;
+import parser.ProgramNode;
 
 /**
  * Node type representing a logical expression 
@@ -17,7 +19,7 @@ import api.Expression;
  */
 //TODO: THIS CLASS MUST DIRECTLY OR INDIRECTLY IMPLEMENT THE Expression INTERFACE
 // AND OVERRIDE THE toString METHOD
-public class LopAnd
+public class LopAnd extends Binop
 {
   /**
    * Constructs an expression with the given left and right sides.
@@ -28,8 +30,27 @@ public class LopAnd
    */
   public LopAnd(Expression lhs, Expression rhs)
   {
-
+	  super(lhs, rhs);
   }
+
+	@Override
+	public int eval(Scope env) {
+		int leftVal = lhs.eval(env);
+		int rightVal = rhs.eval(env);
+		
+		if(leftVal != 0 && rightVal != 0)
+			return 1;
+		else 
+			return 0;
+	}
+
+	
+	@Override
+	public String getLabel() {
+		return "&&";
+	}
+
+
   
 
 }

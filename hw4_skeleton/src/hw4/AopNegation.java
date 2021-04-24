@@ -15,9 +15,7 @@ import parser.ProgramNode;
  */
 // TODO: THIS CLASS MUST DIRECTLY OR INDIRECTLY IMPLEMENT THE Expression INTERFACE
 // AND OVERRIDE THE toString METHOD
-public class AopNegation implements Expression{
-  
-	private Expression express;
+public class AopNegation extends Unop{
 	
 	/**
    * Constructs a new unary expression representing the negative
@@ -27,34 +25,16 @@ public class AopNegation implements Expression{
    */
   public AopNegation(Expression expr)
   {
-	express = expr;   
+	super(expr);   
   }
   
   public int eval(Scope env) {
 	  return -(express.eval(env));
   }
 
-@Override
-public ProgramNode getChild(int i) {
-	if(i == 0)
-		return express;
-	else 
-		return new DefaultNode("Invalid index " + i + " for type " + this.getClass().getName());
-}
 
-@Override
-public String getLabel() {
-	return "Negative";
-}
-
-@Override
-public int getNumChildren() {
-	return 1;
-}
-
-@Override
-public String getText() {
-	return "";
-}
-
+	@Override
+	public String getLabel() {
+		return "Negative";
+	}
 }

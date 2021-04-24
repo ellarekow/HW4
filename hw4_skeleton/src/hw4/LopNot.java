@@ -1,6 +1,7 @@
 package hw4;
 
 import api.Expression;
+import api.Scope;
 
 /**
  * Node type representing a logical expression 
@@ -15,7 +16,7 @@ import api.Expression;
  */
 //TODO: THIS CLASS MUST DIRECTLY OR INDIRECTLY IMPLEMENT THE Expression INTERFACE
 // AND OVERRIDE THE toString METHOD
-public class LopNot
+public class LopNot extends Unop
 { 
   /**
    * Constructs a unary expression that represents the logical negation
@@ -25,7 +26,19 @@ public class LopNot
    */
   public LopNot(Expression expr)
   {
-    
+    super(expr);
   }
+
+	@Override
+	public int eval(Scope env) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	@Override
+	public String getLabel() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

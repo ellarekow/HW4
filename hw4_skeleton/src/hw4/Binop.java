@@ -45,5 +45,10 @@ public abstract class Binop implements Expression{
 	public String toString(){
 	    return makeString();
 	 }
+	
+	public String getText()
+	{
+		return "";
+	}
 
 }
