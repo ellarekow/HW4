@@ -21,9 +21,10 @@ import parser.ProgramNode;
 //TODO: POSSIBLY REFACTOR THIS CLASS TO REDUCE CODE DUPLICATION
 public class AssignmentInstruction extends Minop
 {
-  private Identifier variable;
-  private Expression expression;
-  
+//	
+//  private Identifier variable;
+//  private Expression expression;
+//  
   /**
    * Constructs an assignment instruction representing v = e.
    * @param v

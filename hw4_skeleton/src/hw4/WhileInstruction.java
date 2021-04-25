@@ -21,7 +21,7 @@ import parser.ProgramNode;
  */
 //TODO: THIS CLASS MUST DIRECTLY OR INDIRECTLY IMPLEMENT THE Instruction INTERFACE
 // AND OVERRIDE THE toString METHOD
-public class WhileInstruction
+public class WhileInstruction extends Minop
 {
   
   /**
@@ -33,6 +33,18 @@ public class WhileInstruction
    */
   public WhileInstruction(Expression condition, Instruction s)
   {
-
+	  super(condition, s);
   }
+
+@Override
+public void execute(Scope env) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public String getLabel() {
+	// TODO Auto-generated method stub
+	return "While";
+}
 }

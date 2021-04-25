@@ -10,10 +10,20 @@ public abstract class Minop implements Instruction {
 	
 	protected Identifier variable;
 	protected Expression expression;
+	protected Instruction instruction; 
 	
+	
+	//2 Constructors the move??? 
 	public Minop(Identifier v, Expression e) {
 		variable = v;
 		expression = e;
+		instruction = null; 
+	}
+	
+	public Minop(Expression e, Instruction s) {
+		variable = null;
+		expression = e; 
+		instruction = s;
 	}
 
 	  public String getText()
@@ -25,7 +35,10 @@ public abstract class Minop implements Instruction {
 	  {
 	    if (i == 0)
 	    {
-	      return variable;
+	    	if(variable != null)
+	    		return variable;
+	    	else 
+	    		return instruction;
 	    }
 	    else if (i == 1)
 	    {

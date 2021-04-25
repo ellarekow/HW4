@@ -17,9 +17,10 @@ import parser.ProgramNode;
  */
 //TODO: THIS CLASS MUST DIRECTLY OR INDIRECTLY IMPLEMENT THE Instruction INTERFACE
 // AND OVERRIDE THE toString METHOD
-public class OutputInstruction
+public class OutputInstruction implements Instruction
 {
   
+	private Expression expression;
   /**
    * Constructs an output statement for the given expression.
    * @param expr
@@ -27,7 +28,38 @@ public class OutputInstruction
    */
   public OutputInstruction(Expression expr)
   {
-
+	  expression = expr; 
   }
+
+	@Override
+	public ProgramNode getChild(int arg0) {
+		// TODO Auto-generated method stub
+		return expression;
+	}
+	
+	@Override
+	public String getLabel() {
+		// TODO Auto-generated method stub
+		return "Output";
+	}
+	
+	@Override
+	public int getNumChildren() {
+		// TODO Auto-generated method stub
+		return 1;
+	}
+	
+	@Override
+	public String getText() {
+		// TODO Auto-generated method stub
+		return "";
+	}
+	
+	@Override
+	public void execute(Scope env) {
+		// TODO Auto-generated method stub
+		System.out.println(expression.eval(env));
+		
+	}
 
 }
