@@ -33,6 +33,36 @@ public class WhileInstruction
    */
   public WhileInstruction(Expression condition, Instruction s)
   {
+<<<<<<< Updated upstream
 
   }
+=======
+	  super(condition, s);
+  }
+
+  /**
+   * @param env
+   * maps the variables
+   * 
+   * executes the functions until it evaulates to 0
+   */
+@Override
+public void execute(Scope env) {
+	// TODO Auto-generated method stub
+	if(getExpr().eval(env) != 0) {
+		getInstrcut().execute(env);
+		execute(env);
+	}
+}
+
+/**
+ * @return label
+ * returns the string "While"
+ */
+@Override
+public String getLabel() {
+	// TODO Auto-generated method stub
+	return "While";
+}
+>>>>>>> Stashed changes
 }

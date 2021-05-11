@@ -28,6 +28,38 @@ public class LopAnd
    */
   public LopAnd(Expression lhs, Expression rhs)
   {
+<<<<<<< Updated upstream
+=======
+	  super(lhs, rhs);
+  }
+
+  /**
+   * @param env
+   * 	maps the variable names
+   * @return bothTrue
+   * 	if both values are non zero numbers, returns 1 otherwise returns 0
+   */
+	@Override
+	public int eval(Scope env) {
+		int leftVal = getlhs().eval(env);
+		int rightVal = getrhs().eval(env);
+		
+		if(leftVal != 0 && rightVal != 0)
+			return 1;
+		else 
+			return 0;
+	}
+
+	/**
+	 * @return label
+	 *  returns string "&&"
+	 */
+	@Override
+	public String getLabel() {
+		return "&&";
+	}
+
+>>>>>>> Stashed changes
 
   }
   

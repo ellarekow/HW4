@@ -30,8 +30,14 @@ public class AopNegation implements Expression{
 	express = expr;   
   }
   
+  /**
+   * @param env 
+   * maps variable names
+   * @returns the expression evaluation negated
+   */
+  @Override
   public int eval(Scope env) {
-	  return -(express.eval(env));
+	  return -(getExpr().eval(env));
   }
 
 @Override
@@ -57,4 +63,15 @@ public String getText() {
 	return "";
 }
 
+<<<<<<< Updated upstream
+=======
+	/**
+	 * 
+	 * @return string "negative"
+	 */
+  	@Override
+	public String getLabel() {
+		return "Negative";
+	}
+>>>>>>> Stashed changes
 }

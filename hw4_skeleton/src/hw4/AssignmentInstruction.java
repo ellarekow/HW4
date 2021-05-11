@@ -37,12 +37,20 @@ public class AssignmentInstruction implements Instruction
     expression = e;
   }
 
+  /**
+   * @return string "Assign"
+   */
   @Override
   public String getLabel()
   {
     return "Assign";
   }
 
+  /**
+   * @param env
+   * 	maps variable names
+   * assigns the name and value to the scope
+   */
   @Override
   public String getText()
   {
@@ -75,8 +83,8 @@ public class AssignmentInstruction implements Instruction
   @Override
   public void execute(Scope env)
   {
-    String name = variable.getText();
-    int value = expression.eval(env);
+    String name = getVar().getText();
+    int value = getExpr().eval(env);
     
     // update the scope with the new value
     env.put(name, value);

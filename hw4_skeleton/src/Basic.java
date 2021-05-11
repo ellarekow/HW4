@@ -49,7 +49,7 @@ public class Basic
     // we can also use the parser to create a tree from a string or file
     String s = "(fred + 3) + (george + (4 + 5))";
     Expression e = ParserUtil.parseExpression(s);
-//    TreeViewer.start(e);
+    TreeViewer.start(e);
   }
 
 }

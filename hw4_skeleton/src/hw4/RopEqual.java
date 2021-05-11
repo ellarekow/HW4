@@ -27,7 +27,40 @@ public class RopEqual
    */
   public RopEqual(Expression lhs, Expression rhs)
   {
+<<<<<<< Updated upstream
 
   }
+=======
+	  super(lhs, rhs);
+  }
+
+  /**
+   * @param env
+   * maps the variables
+   * @return isEqual 
+   * returns 1 if the two expressions evaluated are equal otherwise returns 0
+   */
+@Override
+public int eval(Scope env) {
+	int leftVal = getlhs().eval(env);
+	int rightVal = getrhs().eval(env);
+	
+	if(leftVal == rightVal)
+		return 1;
+	else 
+		return 0;
+	
+}
+
+/**
+ * @return label 
+ * returns the string "=="
+ */
+@Override
+public String getLabel() {
+	// TODO Auto-generated method stub
+	return "==";
+}
+>>>>>>> Stashed changes
 
 }

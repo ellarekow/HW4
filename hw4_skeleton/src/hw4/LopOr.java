@@ -27,7 +27,38 @@ public class LopOr
    */
   public LopOr(Expression lhs, Expression rhs)
   {
+<<<<<<< Updated upstream
 
   }
+=======
+	  super(lhs, rhs);
+  }
+
+  /**
+   * @param env
+   * maps the variable names
+   * @return eitherTrue
+   * returns 1 if neither of the values evaluate to 0, 1 otherwise 
+   */
+@Override
+public int eval(Scope env) {
+	int leftVal = getlhs().eval(env);
+	int rightVal = getrhs().eval(env);
+	
+	if(leftVal == 0 && rightVal == 0)
+		return 0;
+	else 
+		return 1;
+}
+
+/**
+ * @return label 
+ * returns the string "||" 
+ */
+@Override
+public String getLabel() {
+	return "||";
+}
+>>>>>>> Stashed changes
 
 }

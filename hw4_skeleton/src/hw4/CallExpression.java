@@ -27,8 +27,16 @@ import parser.ProgramNode;
  */
 // TODO: THIS CLASS MUST DIRECTLY OR INDIRECTLY IMPLEMENT THE Expression INTERFACE
 // AND OVERRIDE THE toString METHOD
-public class CallExpression
+public class CallExpression implements Expression
 {
+	/**
+	 * function for the current expression 
+	 */
+	private Function fun;
+	/**
+	 * argument list for the function 
+	 */
+	private ArgList arg; 
   /**
    * Constructs a CallExpression for the given function and argument list.
    * @param f
@@ -38,7 +46,8 @@ public class CallExpression
    */
   public CallExpression(Function f, ArgList args)
   {
-
+	  fun = f;
+	  arg = args; 
   }
   
   /**
@@ -49,6 +58,64 @@ public class CallExpression
   public void setFunction(Function f)
   {
     // TODO
+	  fun = f;  
   }
+
+  /**
+   * @param arg0
+   * 	gets the index of the child 
+   * 
+   * @return child
+   * 	returns which child referenced
+   */
+@Override
+public ProgramNode getChild(int arg0) {
+	if(arg0 == 0)
+		return fun;
+	else if(arg0 == 1)
+		return arg; 
+	else
+		 return new DefaultNode("Invalid index " + arg0 + " for type " + this.getClass().getName());    
+}
+
+/**
+ * @return String
+ * 	returns the label "Call"
+ */
+@Override
+public String getLabel() {
+	return "Call";
+}
+
+/**
+ * @return child 
+ * returns the two child
+ */
+@Override
+public int getNumChildren() {
+	return 2;
+}
+
+/**
+ * @return text
+ * 	returns the getText function
+ */
+@Override
+public String getText() {
+	return fun.getText();
+}
+
+/**
+ * @param env
+ * 	maps variable names
+ * @return 
+ * 	evaluates the expression 
+ */
+@Override
+public int eval(Scope env) {
+	ProgramNode node = fun.getChild(2);
+	Expression expr = (Expression) node;
+	return expr.eval(env);
+}
 
 }

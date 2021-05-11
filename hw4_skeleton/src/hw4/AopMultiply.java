@@ -29,24 +29,35 @@ public class AopMultiply extends Binop
 	  super(lhs, rhs);
   }
   
+  /**
+   * @return string "*"
+   */
   @Override
   public String getLabel()
   {
     return "*";
   }
   
+<<<<<<< Updated upstream
   @Override
   public String getText()
   {
     return "";
   }
   
+=======
+  /**
+   * @param env 
+   * maps variable names
+   * @return left side multiplied by right side
+   */
+>>>>>>> Stashed changes
   @Override
   public int eval(Scope env)
   {
 
-    int leftVal = lhs.eval(env);
-    int rightVal = rhs.eval(env);
+    int leftVal = super.getlhs().eval(env);
+    int rightVal = super.getrhs().eval(env);
     return leftVal * rightVal;
   }
   

@@ -29,24 +29,33 @@ public class AopSubtract extends Binop
 	   super(lhs, rhs);
   }
   
+  /**
+   * @return String "-"
+   */
   @Override
   public String getLabel()
   {
     return "-";
   }
 
+  /**
+   * @return empty string
+   */
   @Override
   public String getText()
   {
     return "";
   }
   
+  /**
+   * @return left minus right side
+   */
   @Override
   public int eval(Scope env)
   {
 
-    int leftVal = lhs.eval(env);
-    int rightVal = rhs.eval(env);
+    int leftVal = super.getlhs().eval(env);
+    int rightVal = super.getrhs().eval(env);
     return leftVal - rightVal;
   }
   

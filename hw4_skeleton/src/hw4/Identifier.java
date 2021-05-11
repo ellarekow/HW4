@@ -33,36 +33,64 @@ public class Identifier implements Expression
     name = givenName;
   }
 
+  /**
+   * @return label 
+   * returns the label "ID" 
+   */
   @Override
   public String getLabel()
   {
     return "Id";
   }
 
+  /**
+   * @return name
+   * returns the name
+   */
   @Override
   public String getText()
   {
     return name;
   }
 
+  /**
+   * @param i
+   * 	the index of which child is being referenced 
+   * @return child
+   * 	there are no child so will always returns an error message
+   */
   @Override
   public ProgramNode getChild(int i)
   {
     return new DefaultNode("Invalid index " + i + " for type " + this.getClass().getName());
   }
 
+  /**
+   * @return children
+   * 	returns 0 as there are no children
+   */
   @Override
   public int getNumChildren()
   {
     return 0;
   }
 
+  /**
+   * @param env
+   * 	maps the variable name
+   * @return name
+   * 	returns the name
+   */
   @Override
   public int eval(Scope env)
   {
-    return env.get(name);
+		  return env.get(name);
   }
 
+  /**
+   * @return string 
+   * 	returns the name
+   */
   @Override
   public String toString()
   {

@@ -30,6 +30,34 @@ public class RopLessThan
   public RopLessThan(Expression lhs, Expression rhs)
   {
 
+<<<<<<< Updated upstream
   }
+=======
+  /**
+   * @param env
+   * maps the variables
+   * @return isLessThan
+   * returns 1 if the left side is evaluated to be smaller than the right side, 0 otherwise
+   */
+	@Override
+	public int eval(Scope env) {
+		int leftVal = getlhs().eval(env);
+		int rightVal = getrhs().eval(env);
+		
+		if(leftVal < rightVal)
+			return 1;
+		else
+			return 0;
+	}
+	
+	/**
+	 * @return label 
+	 * returns the string "<"
+	 */
+	@Override
+	public String getLabel() {
+		return "<";
+	}
+>>>>>>> Stashed changes
 
 }

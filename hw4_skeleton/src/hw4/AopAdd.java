@@ -31,12 +31,22 @@ public class AopAdd extends Binop
     super(lhs, rhs);
   }
 
+  
+  /**
+   * @return the string "+"
+   */
   @Override
   public String getLabel()
   {
     return "+";
   }
 
+  /**
+   * @param env
+   *  maps variable names
+   * returns the addition of the two sides of the equation
+   * @return left side plus right side 
+   */
   @Override
   public String getText()
   {
@@ -46,8 +56,8 @@ public class AopAdd extends Binop
   @Override
   public int eval(Scope env)
   {
-    int leftVal = lhs.eval(env);
-    int rightVal = rhs.eval(env);
+    int leftVal = super.getlhs().eval(env);
+    int rightVal = super.getrhs().eval(env);
     return leftVal + rightVal;
   }
   

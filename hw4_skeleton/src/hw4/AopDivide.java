@@ -29,12 +29,19 @@ public class AopDivide extends Binop
 	  super(lhs, rhs);
   }
   
+  /**
+   * @return string "/"
+   */
   @Override
   public String getLabel()
   {
     return "/";
   }
   
+  /**
+   * @param env maps variable names
+   * @return left side divided by right side
+   */
   @Override
   public String getText()
   {
@@ -44,8 +51,8 @@ public class AopDivide extends Binop
   @Override
   public int eval(Scope env)
   {
-    int leftVal = lhs.eval(env);
-    int rightVal = rhs.eval(env);
+	int leftVal = super.getlhs().eval(env);
+    int rightVal = super.getrhs().eval(env);
     return leftVal / rightVal;
   }
 
